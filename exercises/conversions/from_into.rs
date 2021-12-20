@@ -35,27 +35,33 @@ impl Default for Person {
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
-        if s.len() == 0 {
+        let mut person = Person::default();
+        if s.chars().count() == 0 {
+            return person;
+        }
+        let vec =s.split(',').collect::<Vec<&str>>();
+        let mut itr = vec.iter();
+        if let Some(name) = itr.next() {
+            if name.chars().count() == 0 {
+                return person;
+            }
+            person.name = name.to_string();
+        }
+        if let Some(age) = itr.next() {
+            let res = age.parse();
+            match res {
+                Ok(age) => person.age = age,
+                Err(e) => return Person::default(),
+            }
+        }
+        else {
             return Person::default();
         }
-
-        let mut split = s.split(',');
-        let vec = split.collect::<Vec<&str>>();
-
-        if vec.len() != 2 {
-            return Person::default()
-        }
-
-        let name = vec[0];
-        if name.len() == 0 {
+        // Extra data is bad. Return default.
+        if let Some(_) = itr.next() {
             return Person::default();
         }
-
-        let age = vec[1].parse::<usize>();
-        match age {
-            Ok(a) => return Person{ name: String::from(name), age: a},
-            Err(e) => return Person::default()
-        }
+        return person
     }
 }
 
@@ -131,6 +137,20 @@ mod tests {
     #[test]
     fn test_missing_name_and_invalid_age() {
         let p: Person = Person::from(",one");
+        assert_eq!(p.name, "John");
+        assert_eq!(p.age, 30);
+    }
+
+    #[test]
+    fn test_trailing_comma() {
+        let p: Person = Person::from("Mike,32,");
+        assert_eq!(p.name, "John");
+        assert_eq!(p.age, 30);
+    }
+
+    #[test]
+    fn test_trailing_comma_and_some_string() {
+        let p: Person = Person::from("Mike,32,man");
         assert_eq!(p.name, "John");
         assert_eq!(p.age, 30);
     }

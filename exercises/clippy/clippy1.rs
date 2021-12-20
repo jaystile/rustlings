@@ -6,10 +6,24 @@
 // check clippy's suggestions from the output to solve the exercise.
 // Execute `rustlings hint clippy1` for hints :)
 
+// TODO: This was working out of the box, so clippy couldn't help
 fn main() {
     let x = 1.2331f64;
     let y = 1.2332f64;
-    if (y - x).abs() < f64::EPSILON {
+
+    if (x - y).abs() < f64::EPSILON {
         println!("Success!");
     }
+
 }
+
+// TODO: This actually throws a clipping warning
+// fn main() {
+ //   let x = 1.2331f64;
+ //   let y = 1.2332f64;
+//
+ //   if x - y < f64::EPSILON {
+ //       println!("Success!");
+ //   }
+//}
+

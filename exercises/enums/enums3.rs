@@ -2,10 +2,10 @@
 // Address all the TODOs to make the tests pass!
 
 enum Message {
-    ChangeColor((u8, u8, u8)),
-    Echo(String),
     Move(Point),
-    Quit
+    Echo(String),
+    ChangeColor((u8, u8, u8)),
+    Quit,
 }
 
 struct Point {
@@ -38,16 +38,10 @@ impl State {
 
     fn process(&mut self, message: Message) {
         match message {
-            Message::ChangeColor(color) => {
-                self.change_color(color)
-            },
-            Message::Echo(msg) => {
-                println!("{}", msg)
-            },
-            Message::Move(point) => {
-                self.move_position(point)
-            },
-            Message::Quit => self.quit()
+            Message::Move(point) => self.move_position(point),
+            Message::Echo(s) => self.echo(s),
+            Message::ChangeColor(color) => self.change_color(color),
+            Message::Quit => self.quit(),
         }
     }
 }

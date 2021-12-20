@@ -3,24 +3,7 @@
 // Execute `rustlings hint primitive_types3` for hints!
 
 fn main() {
-    let a = ["aasdf", "asedf", "fda", "a", "b", "c", "d", 
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d",
-    "aasdf", "asedf", "fda", "a", "b", "c", "d"
-    ];
+    let a = [0; 100];
 
     if a.len() >= 100 {
         println!("Wow, that's a big array!");

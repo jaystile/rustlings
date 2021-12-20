@@ -19,7 +19,6 @@ fn main() -> Result<(), ParseIntError> {
         println!("You now have {} tokens.", tokens);
     }
     Ok(())
-
 }
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
